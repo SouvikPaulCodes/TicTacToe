@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.playground {
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(3, 100px);
+    gap: 0;
+}
+
+.x, .o {
+    height: 100px;
+    width: 100px;
+}
+
+.cell {
+    border: 3px solid red;
+    box-sizing: border-box; /* important so border doesn't affect size */
+    width: 100px;
+    height: 100px;
+}
+
+.inside {
+    height: 100px;
+    width: 100px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <h1>TIC TAC TOE</h1>
+    <div class="players">
+        <button class="player1" id="og1"><div class="player1">PLAYER 1</div></button>
+        <button class="player2" id="og2"><div class="player2">PLAYER 2</div></button>
+    </div> 
+    <dialog class="before">
+        <legend>CHOOSE ONE:</legend>
+        <div class="choices">
+            <img class="x" src="./big-x.svg" alt="image of x">
+            <img class="o" src="./2390-letter-o.svg" alt="image of o">
+        </div>
+    </dialog>  
+    <div class="grid">
+        <div class="playground">
+            <div class="cell" id="c1"></div>
+            <div class="cell" id="c2"></div>
+            <div class="cell" id="c3"></div>
+            <div class="cell" id="c4"></div>
+            <div class="cell" id="c5"></div>
+            <div class="cell" id="c6"></div>
+            <div class="cell" id="c7"></div>
+            <div class="cell" id="c8"></div>
+            <div class="cell" id="c9"></div>
+        </div>
+    </div> 
+    <dialog class="winner">
+        <div class="text"></div>
+        <button class="ok">OK</button>
+    </dialog>   
+</body>
+</html>
