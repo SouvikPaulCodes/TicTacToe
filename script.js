@@ -61,7 +61,7 @@ document.querySelector('.choices').addEventListener('click', function(event){
     const img1 = document.createElement('img');
     const img2 = document.createElement('img');
     img1.classList.add('but1');
-    img1.classList.add('but2');
+    img2.classList.add('but2');
     if(user1.getSymbol()==="X"){
         img1.src = './big-x.svg';
         img2.src = './2390-letter-o.svg';
