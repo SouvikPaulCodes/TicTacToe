@@ -22,14 +22,21 @@ let selected = '';
 
 players.addEventListener('click', function(event){
     const clicked = event.target.className;
+    if(fix===1) return;
+    fix = 1;
     
     if(clicked==='player1' || clicked==='player2'){
         selected = clicked;
+        document.querySelector(`body`).classList.add(`dimmed`);
         dialog.showModal();       
     }
 })
 
 let XorO = 0;
+let fix = 0;
+
+const turnTxt = document.createElement('div');
+turnTxt.classList.add(`turnTxt`);
 
 document.querySelector('.choices').addEventListener('click', function(event){
     const choose = event.target.className;
@@ -73,6 +80,11 @@ document.querySelector('.choices').addEventListener('click', function(event){
     
     playerOne.appendChild(img1);
     playerTwo.appendChild(img2);
+
+    document.querySelector(`body`).appendChild(turnTxt);
+    turnTxt.textContent = `It is ${turn}'s turn`;
+
+    document.querySelector(`body`).classList.remove(`dimmed`);
 
     dialog.close();
 })
@@ -195,14 +207,25 @@ document.querySelector(`.playground`).addEventListener('click', function(event){
         }
         else if(turn==='PLAYER 1'){
             turn = 'PLAYER 2';
+            turnTxt.textContent = `It is ${turn}'s turn`;
+            if(user2.getSymbol()==="X") turnImg.src = `./big-x.svg`;
+            else turnImg.src = './2390-letter-o.svg';
         }
-        else turn = 'PLAYER 1';
+        else {
+            turn = 'PLAYER 1';
+            turnTxt.textContent = `It is ${turn}'s turn`;
+            if(user1.getSymbol()==="X") turnImg.src = `./big-x.svg`;
+            else turnImg.src = './2390-letter-o.svg';
+        }
     }
     
 });
 
 document.querySelector(`.ok`).addEventListener('click', function(){
     winbox.close();
+
+    fix = 0;
+
     play = Array.from({length : 3}, () => Array(3).fill(null));
 
     document.querySelectorAll(`.cell`).forEach(num => {
@@ -219,6 +242,9 @@ document.querySelector(`.ok`).addEventListener('click', function(){
 
     const res2 = playerTwo.querySelector(`img`);
     if(res2) playerTwo.removeChild(res2);
+
+    turnTxt.textContent = ``;
+    document.querySelector(`body`).removeChild(turnTxt);
 
     user1.setSymbol("");
     user2.setSymbol("");

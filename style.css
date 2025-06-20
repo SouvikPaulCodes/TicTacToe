@@ -12,13 +12,61 @@ body {
     align-items: center;
     background-color: black;
     color: white;
+    gap: 30px;
 }
 
 h1 {
     font-family: 'blackops', 'Calibri', 'Roboto', sans-serif;
     text-align: center;
-    font-size: 100px;
+    font-size: min(100px, 50vw);
     margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.players {
+    display: flex;
+    gap: 100px;
+}
+
+#og1, #og2 {
+    height: 60px;
+    width: 150px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#og1 {
+    background-color: rgb(158, 255, 158);
+}
+
+#og2 {
+    background-color: rgb(214, 214, 255);
+}
+
+.dimmed {
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+.before {
+    pointer-events: auto;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 20px;
+    background-color: white;
+}
+
+legend {
+    text-align: center;
+    font-family: cursive;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.player1, .player2 {
+    font-size: 17px;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .but1, .but2 {
@@ -28,8 +76,8 @@ h1 {
 
 .playground {
     display: grid;
-    grid-template: repeat(3, 100px) / repeat(3, 100px);
-    gap: 0;
+    grid-template: repeat(3, 120px) / repeat(3, 120px);
+    gap: 20px;
 }
 
 .x, .o {
@@ -38,10 +86,17 @@ h1 {
 }
 
 .cell {
-    border: 3px solid red;
-    box-sizing: border-box; /* important so border doesn't affect size */
-    width: 100px;
-    height: 100px;
+    display: flex;
+    border: 1px solid rgb(255, 255, 255);
+    box-sizing: border-box;
+    width: 120px;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell:hover {
+    background-color: rgb(185, 185, 185);
 }
 
 .inside {
