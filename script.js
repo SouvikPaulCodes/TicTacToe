@@ -28,6 +28,7 @@ players.addEventListener('click', function(event){
     if(clicked==='player1' || clicked==='player2'){
         selected = clicked;
         document.querySelector(`body`).classList.add(`dimmed`);
+        dialog.id = `styling`;
         dialog.showModal();       
     }
 })
@@ -35,8 +36,7 @@ players.addEventListener('click', function(event){
 let XorO = 0;
 let fix = 0;
 
-const turnTxt = document.createElement('div');
-turnTxt.classList.add(`turnTxt`);
+const chooseTxt = document.body.querySelector(`.chooseTxt`);
 
 document.querySelector('.choices').addEventListener('click', function(event){
     const choose = event.target.className;
@@ -81,11 +81,11 @@ document.querySelector('.choices').addEventListener('click', function(event){
     playerOne.appendChild(img1);
     playerTwo.appendChild(img2);
 
-    document.querySelector(`body`).appendChild(turnTxt);
-    turnTxt.textContent = `It is ${turn}'s turn`;
-
     document.querySelector(`body`).classList.remove(`dimmed`);
 
+    chooseTxt.textContent = `IT IS ${turn}'S TURN`;
+
+    dialog.removeAttribute(`id`);
     dialog.close();
 })
 
@@ -199,29 +199,31 @@ document.querySelector(`.playground`).addEventListener('click', function(event){
         game.setCell(row, col, used);
         if(game.isWon(row, col)===true){
             wintext.textContent = `${turn} has won the game!!!`;
+            document.querySelector(`body`).classList.add(`dimmed`);
+            winbox.id = `winId`;
             winbox.showModal();
         }
         else if(game.isDraw()===true){
             wintext.textContent = `Both the players were equally matched`;
+            document.querySelector(`body`).classList.add(`dimmed`);
+            winbox.id = `winId`;
             winbox.showModal();
         }
         else if(turn==='PLAYER 1'){
             turn = 'PLAYER 2';
-            turnTxt.textContent = `It is ${turn}'s turn`;
-            if(user2.getSymbol()==="X") turnImg.src = `./big-x.svg`;
-            else turnImg.src = './2390-letter-o.svg';
+            chooseTxt.textContent = `IT IS ${turn}'S TURN`;
         }
         else {
             turn = 'PLAYER 1';
-            turnTxt.textContent = `It is ${turn}'s turn`;
-            if(user1.getSymbol()==="X") turnImg.src = `./big-x.svg`;
-            else turnImg.src = './2390-letter-o.svg';
+            chooseTxt.textContent = `IT IS ${turn}'S TURN`;
         }
     }
     
 });
 
 document.querySelector(`.ok`).addEventListener('click', function(){
+    document.querySelector(`body`).classList.remove(`dimmed`);
+    winbox.removeAttribute(`id`);
     winbox.close();
 
     fix = 0;
@@ -243,8 +245,7 @@ document.querySelector(`.ok`).addEventListener('click', function(){
     const res2 = playerTwo.querySelector(`img`);
     if(res2) playerTwo.removeChild(res2);
 
-    turnTxt.textContent = ``;
-    document.querySelector(`body`).removeChild(turnTxt);
+    chooseTxt.textContent = `CHOOSE YOUR CHAMPION`;
 
     user1.setSymbol("");
     user2.setSymbol("");
