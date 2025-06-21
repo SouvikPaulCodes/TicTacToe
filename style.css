@@ -38,7 +38,7 @@ h1 {
     height: 60px;
     width: 150px;
     border-radius: 15px;
-    padding: 15px;
+    padding: 10px;
 }
 
 #og1 {
@@ -46,7 +46,7 @@ h1 {
 }
 
 #og2 {
-    background-color: rgb(214, 178, 255);
+    background-color: rgb(232, 212, 255);
 }
 
 .dimmed {
